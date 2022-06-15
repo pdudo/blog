@@ -4,4 +4,4 @@
 
 ### Index
 
-- [2022-06-15 力扣-192-统计词频](2022-06-15-leetcode-192-Statistics-word-frequency.md)
+- [2022-06-15 力扣-192-统计词频](leetcode/2022-06-15-leetcode-192-Statistics-word-frequency.html)
