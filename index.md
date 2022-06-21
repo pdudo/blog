@@ -5,3 +5,4 @@
 ### Index
 
 - [2022-06-15 力扣-192-统计词频](leetcode/2022-06-15-leetcode-192-Statistics-word-frequency.html)
+- [2022-06-21 数据结构 跳跃表 C语言实现](dataStructures/2022-06-21-skiplist-c.html)
