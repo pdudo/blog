@@ -209,7 +209,7 @@ func main() {
 
 我们想发送一个字符串: "hello juejin pdudo"，按照我们之前设想的，模拟出来应该是这样的
 
-![](https://cdn.nlark.com/yuque/0/2022/png/584442/1650525770430-3c87b75e-65f3-4157-9e3a-cef552ffc153.png)
+![](img/Complete_A_Sample_TCP_Servers/2022-07-01-09-40-55-image.png)
 
 我们如何写入18这个数据呢？ 这就引入了我们下面介绍的，什么是大端序和小端序
 
@@ -229,17 +229,17 @@ func main() {
 
 那么它的字节图应该是这样的
 
-![](https://cdn.nlark.com/yuque/0/2022/png/584442/1650527450605-b324d910-617e-4e4d-a3fd-39c784102eae.png)
+![](img/Complete_A_Sample_TCP_Servers/2022-07-01-09-41-07-image.png)
 
 我们按照大端和小端来看一下
 
 小端序
 
-![](https://cdn.nlark.com/yuque/0/2022/png/584442/1650527561390-b23d9fc7-435d-493e-bc21-a5a0c36cfe2b.png)
+![](img/Complete_A_Sample_TCP_Servers/2022-07-01-21-41-12-image.png)
 
 大端序
 
-![](https://cdn.nlark.com/yuque/0/2022/png/584442/1650527596540-774519b0-ab72-476a-9169-0bb960c394d8.png)
+![](img/Complete_A_Sample_TCP_Servers/2022-07-01-21-41-20-image.png)
 
 为什么我们上面定义的简单服务器中发送字符为什么没有使用大端或者小端呢？
 
