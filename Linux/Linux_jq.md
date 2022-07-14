@@ -25,13 +25,17 @@
 
 直接使用`apt`安装即可
 
+```bash
 apt-get install jq
+```
 
 #### `redhat`系列
 
 直接使用`yum`安装即可
 
+```bash
 yum install jq
+```
 
 #### 版本查看
 
@@ -53,7 +57,11 @@ yum install jq
 
 我们需要格式化`{"id":0,"name":"pdudo","site":"juejin"}`
 
-使用命令：`echo '{"id":0,"name":"pdudo","site":"juejin"}' | jq .`
+使用命令：
+
+```bash
+echo '{"id":0,"name":"pdudo","site":"juejin"}' | jq .
+```
 
 ![](img/Linux_jq/2022-07-04-17-18-41-image.png)
 
@@ -63,13 +71,21 @@ yum install jq
 
 我们还是使用如上数据： `{"id":0,"name":"pdudo","site":"juejin"}`，我们将获取`name`的值
 
-命令: `echo '{"id":0,"name":"pdudo","site":"juejin"}' | jq '.name'`
+命令: 
+
+```bash
+echo '{"id":0,"name":"pdudo","site":"juejin"}' | jq '.name'
+```
 
 ![](img/Linux_jq/2022-07-04-17-19-01-image.png)
 
 若想获取多个数据，可以使用`,`间隔，例如，我们不仅想获取`name`还想获取`site`的值
 
-命令: `echo '{"id":0,"name":"pdudo","site":"juejin"}' | jq '.name,.site'`
+命令: 
+
+```bash
+echo '{"id":0,"name":"pdudo","site":"juejin"}' | jq '.name,.site'
+```
 
 ![](img/Linux_jq/2022-07-04-17-19-19-image.png)
 
@@ -81,7 +97,11 @@ yum install jq
 
 我们还是使用如上`json`数据
 
-使用命令：`echo '{"id":0,"name":"pdudo","site":"juejin"}' | jq 'keys'`
+使用命令：
+
+```bash
+echo '{"id":0,"name":"pdudo","site":"juejin"}' | jq 'keys'
+```
 
 ![](img/Linux_jq/2022-07-04-17-19-34-image.png)
 
@@ -95,15 +115,23 @@ yum install jq
 
 例如，上一个案例，我们已经将`json`的`key`放入数组了，我们获取一下长度
 
-命令： `echo '{"id":0,"name":"pdudo","site":"juejin"}' | jq 'keys' | jq '.|length'`
+命令： 
+
+```bash
+echo '{"id":0,"name":"pdudo","site":"juejin"}' | jq 'keys' | jq '.|length'
+```
 
 ![](img/Linux_jq/2022-07-04-17-19-55-image.png)
 
-
-
 如上我们知晓`jq`中的`|`也会将上一个过滤器输出作为下一个过滤器输入，所以，我们可以直接在`js 'keys'`后加入`|length`
 
-我们可以这么写：`echo '{"id":0,"name":"pdudo","site":"juejin"}' | jq 'keys|length'`，也可以获取数据
+我们可以这么写：
+
+```bash
+echo '{"id":0,"name":"pdudo","site":"juejin"}' | jq 'keys|length'
+```
+
+也可以获取数据
 
 ![](img/Linux_jq/2022-07-04-17-20-11-image.png)
 
@@ -115,13 +143,21 @@ yum install jq
 
 我们来获取下标为`0`和`1`的数据
 
-命令: `echo '["id","name","site"]' | jq '.[0]'`
+命令: 
+
+```bash
+echo '["id","name","site"]' | jq '.[0]'
+```
 
 ![](img/Linux_jq/2022-07-04-17-20-28-image.png)
 
 使用`jq '.[]'`是获取`json`的数组的所有数据
 
-命令: `echo '["id","name","site"]' | jq '.[]'`
+命令: 
+
+```bash
+echo '["id","name","site"]' | jq '.[]'
+```
 
 ![](img/Linux_jq/2022-07-04-17-20-39-image.png)
 
@@ -137,7 +173,11 @@ yum install jq
 
 例如，我们构建了如下数据
 
-命令: `echo '{"info": [{"name": "bob","age": 32,"sex": 1},{"name": "tom","age": 58,"sex": 2},{"name": "tom","age": 58,"sex": 2}]}' | jq` 
+命令: 
+
+```bash
+echo '{"info": [{"name": "bob","age": 32,"sex": 1},{"name": "tom","age": 58,"sex": 2},{"name": "tom","age": 58,"sex": 2}]}' | jq
+```
 
 ![](img/Linux_jq/2022-07-04-17-21-33-image.png)
 
@@ -145,17 +185,23 @@ yum install jq
 
 这里先直接给出命令，后面再做逐步解析
 
-命令: `echo '{"info": [{"name": "bob","age": 32,"sex": 1},{"name": "tom","age": 58,"sex": 2},{"name": "tom","age": 58,"sex": 2}]}' | jq '.info|map(select(.sex== 2))'`
+命令: 
+
+```bash
+echo '{"info": [{"name": "bob","age": 32,"sex": 1},{"name": "tom","age": 58,"sex": 2},{"name": "tom","age": 58,"sex": 2}]}' | jq '.info|map(select(.sex== 2))'
+```
 
 ![](img/Linux_jq/2022-07-04-17-22-08-image.png)
-
-
 
 命令详细解释： 
 
 若我们要想获取`sex`为`2`的数据,那么，首先我们的获取`info`的信息，如前面所述，我们可以使用`jq .info`获取`info`数组的信息
 
-命令: `jq '.info'` 
+命令: 
+
+```bash
+jq '.info'`
+```
 
 ![](img/Linux_jq/2022-07-04-17-24-22-image.png)
 
@@ -167,7 +213,11 @@ yum install jq
 
 例如：我们想查询`age`大于50的数据
 
-命令: `jq '.info|map(select(.age > 50))'`
+命令: 
+
+```bash
+jq '.info|map(select(.age > 50))'
+```
 
 ![](img/Linux_jq/2022-07-04-17-25-00-image.png)
 
@@ -179,15 +229,57 @@ yum install jq
 
 假设有如下`json`数据，我们想要获取`age`大于等于`30`的`email`地址
 
-![](img/Linux_jq/2022-07-04-17-26-11-image.png)
-
-
+```json
+➜  jq cat text1.txt
+[
+  {
+    "no": 1,
+    "name": "Nikolas Kozey",
+    "age": 30,
+    "tel": "989-531-3143",
+    "email": "ekunde@yahoo.com"
+  },
+  {
+    "no": 2,
+    "name": "Delphia Hirthe",
+    "age": 20,
+    "tel": "1-752-771-7241 x362",
+    "email": "xrobel@murphy.com"
+  },
+  {
+    "no": 3,
+    "name": "Katelyn Jenkins",
+    "age": 56,
+    "tel": "(770) 939-2361 x8973",
+    "email": "adella.wunsch@reinger.org"
+  },
+  {
+    "no": 4,
+    "name": "Anastasia Parisian",
+    "age": 46,
+    "tel": "+1-841-762-1381",
+    "email": "prudence74@yahoo.com"
+  },
+  {
+    "no": 5,
+    "name": "Jerome Welch",
+    "age": 55,
+    "tel": "226-576-9185",
+    "email": "conn.mercedes@gmail.com"
+  }
+]
+➜  jq
+```
 
 我们将上述文件放置在`text1.txt`文件中
 
 我们可以这样来编写
 
-命令: `cat text1.txt | jq '. | map(select(.age>=30)) | .[] | .email'`
+命令: 
+
+```bash
+cat text1.txt | jq '. | map(select(.age>=30)) | .[] | .email'
+```
 
 ![](img/Linux_jq/2022-07-04-17-26-29-image.png)
 
@@ -197,7 +289,11 @@ yum install jq
 
 我们可以这样写
 
-命令: `cat text1.txt| jq '.|map(select(.age>=30))|.[]|{"name": .name,"tel": .tel}'`
+命令: 
+
+```bash
+cat text1.txt| jq '.|map(select(.age>=30))|.[]|{"name": .name,"tel": .tel}'
+```
 
 ![](img/Linux_jq/2022-07-04-17-26-45-image.png)
 
