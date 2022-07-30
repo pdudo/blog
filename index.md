@@ -15,3 +15,5 @@
 - [2022-07-14 初始podman](containers/learn_podman_1.html)
 
 - [2022-07-21-力扣-194-转置文件](leetcode/2022-07-21-194-Transpose-file.html)
+
+- [2022-07-30-linux test表达式1](Linux/Linux_test_1.html)
